@@ -11,8 +11,7 @@ def area_square(side:int)->int:
     Returns:
         int: The area of the square.
     """
-    
-    return 0
+    return side * side
 
 
 def area_triangle(base:int, height:int)->float:
@@ -27,10 +26,12 @@ def area_triangle(base:int, height:int)->float:
     Returns:
         float: The area of the triangle.
     """
-    
-    return 0.0
+    return 0.5 * base * height
 
 def area_circle(radius:int)->float:
+    import math
+    
+    return 3.14 * radius * radius
     
     """
     Calculate the area of a circle (pi * r^2) given its radius.
@@ -42,7 +43,7 @@ def area_circle(radius:int)->float:
         float: The area of the circle.
     """
     
-    return 0.0
+    
 
 def area_rectangle(length:int, width:int)->int:
     
@@ -57,7 +58,7 @@ def area_rectangle(length:int, width:int)->int:
         int: The area of the rectangle.
     """
     
-    return 0
+    return length * width
 
 
 # TODO: Complete the required shapes below
@@ -74,7 +75,8 @@ def draw_square(height:int)->None:
         None: Prints the square pattern directly to console.
         
     """
-    pass
+    for i in range(height):
+        print("*" * height)
 
 def draw_pyramid(height:int)->None:
     
@@ -89,7 +91,19 @@ def draw_pyramid(height:int)->None:
         
     """
     
-    pass
+    output = ""
+    spaces = height - 1
+    for i in range(1, height + 1, 1):
+        if(i > 1):
+            count = i - 1
+            output += (" " * spaces) + ("*" * i) + ("*" * count) + "\n"
+            spaces -= 1
+            if(spaces < 0):
+                spaces = 0
+        else:
+            output += " " * spaces + "*" * i + "\n"
+            spaces -= 1
+    print(output, end="")
 
 def draw_triangle(height:int)->None:
     
@@ -104,8 +118,16 @@ def draw_triangle(height:int)->None:
     
         
     """
-    
-    pass
+    output = ""
+    for i in range(1, height+1):
+        for j in range(1, i+1):
+            if(j  < i):
+                output += str(j) + " "
+                # print(j, end=" ")
+            else:
+                output += str(j) + " \n"
+                # print(j)
+    print(output, end="")
 
 def draw_triangle_reversed(height:int)->None:
     
@@ -122,7 +144,17 @@ def draw_triangle_reversed(height:int)->None:
 
     """
     
-    pass
+    output = ""
+    print_variable = 1
+    for i in range(height, 1-1,  -1):
+        for j in range(1, i+1, 1):
+            if(j<i):
+                output += str(print_variable) + " "
+            else:
+                output += str(print_variable) + " \n"
+                print_variable += 1
+            
+    print(output, end="")
 
 
 
